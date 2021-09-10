@@ -7,35 +7,29 @@
 
     :Namespace Bluenoise
         ∇da←mkda r
-         ;m;w;g;s;gauss;cluster;void;imax
+         ;m;g;s;gauss;cluster;void;imax
          ;l;v;bp;pt;rank;loc;all;⎕IO
          ⎕IO←0
-         m←,⍨2×r
+         m←,⍨2×r ⋄ bp←?m⍴2
          gauss←{*-4.5÷⍨∘.+⍨2*⍨(⌽,1∘↓)⍳1+⍵}
          ⍝ use interger approximation
          s←⍴g←s⌿(s←0≠+/g)/g←⌊0.5+(⊢××/∘⍴)gauss r
          cluster←⊢×(-,⍨r)↓(,⍨r)↓{+/,g×⍵}⌺s∘(r⊖⍪⍨)∘(r⌽,⍨)
-         void←cluster∘~
-         imax←,⍳(⌈/⌈/)
-         bp←?m⍴2
-        loop:
+         void←cluster~ ⋄ imax←,⍳(⌈/⌈/)
+         loop:
          l←imax cluster bp
          (l⌷,bp)←0
          v←imax void bp
          (v⌷,bp)←1
          →(l≠v)/loop
-         pt←bp
-         da←m⍴0
-         rank←¯1++/,bp
+         pt←bp ⋄ da←m⍴0 ⋄ rank←¯1++/,bp
          :While rank≥0
              loc←imax cluster pt
              (loc⌷,pt)←0
              (loc⌷,da)←rank
              rank-←1
          :EndWhile
-         pt←bp
-         rank←+/,bp
-         all←×/m
+         pt←bp ⋄ rank←+/,bp ⋄ all←×/m
          :While rank<all
              loc←imax void pt
              (loc⌷,pt)←1
@@ -47,14 +41,13 @@
 
     :Namespace Dither
         diffuse←{
-            ⎕DIV←1
-            in←(1-⍵÷255)
+            ⎕DIV←⎕IO←1
+            in←1-⍵÷255
             g←3 3⍴1 2 1 2 3 2 1 2 1
             m←⍺ ##.tiling⍨⍴⍵
             cvol←{+/,g×⍵}⌺3 3
             ⊃{
-                k←m=⍺
-                b←0.5≤a←in×k
+                b←0.5≤a←in×m=⍺
                 err←a-b
                 c←err÷cvol m>⍺
                 in+←cvol c
@@ -71,12 +64,12 @@
     :EndNamespace
 
     :Namespace Blur
-        boxblur←{⌊({+/,⍵}⌺b⊢⍵)÷{+/,⍵}⌺(b←1+2×,⍨⍺)⊢(⍴⍵)⍴1}
+        boxblur←{⌊⍵÷⍥({+/,⍵}⌺(1+2×⍺ ⍺))1⍴⍨⍴⍵}
         gblur←{
             ⎕IO←0
             l rad←⍺
             m←(⍴⍵)⍴1
-            box←{({+/,⍵}⌺s⊢⍵)÷{+/,⍵}⌺(s←⍺ ⍺)⊢m}
+            box←{⍵÷⍥({+/,⍵}⌺(⍺ ⍺))m}
             bforg←{
                 wl←(⊢-(~2∘|))⌊0.5*⍨1+⍺÷⍨i←12×⍵*2
                 m←(⌊0.5+⊢)(¯4×1+wl)÷⍨i-+/(wl*2 1 0)×1 4 3×⍺
@@ -88,10 +81,8 @@
 
     :Namespace Interpol
         nearest←{
-            img←⍺
-            x y←⍵
-            a b←(⍴img)(##.quant⍥##.linear)¨⍵
-            img[a;b]
+            ⍝ img←⍺ ⋄ x y←⍵
+            ⍺⌷⍨(⍴⍺)(##.quant⍥##.linear)¨⍵
         }
     :EndNamespace
 :EndNamespace
