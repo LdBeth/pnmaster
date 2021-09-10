@@ -79,6 +79,59 @@
             h←3 3⍴(9⍴2)⊤404
             {3<+/,h×⍵}⌺3 3⊢⍵
         }
-    :EndNamespace
+        opening←{
+            h2←⌽⊖h1←3 3⍴(9⍴2)⊤404
+            {0<+/,h2×⍵}⌺3 3⊢{3<+/,h1×⍵}⌺3 3⊢⍵
+        }
+        closing←{
+            h2←⌽⊖h1←3 3⍴(9⍴2)⊤83
+            {3<+/,h1×⍵}⌺3 3⊢{0<+/,h2×⍵}⌺3 3⊢⍵
+        }
+        hitndmis←{
+            ⍝ find corner
+            h2←⌽⊖h1←2=∘.∧⍨2 1 0
+            ({2<+/,h1×⍵}⌺3 3∧{2<+/,h2×⍵}⌺3 3∘~)⍵
+        }
+        mofilter←{
+            h←∘.∨⍨0 1 0
+            ({0<+/,h×⍵}⌺3 3)⍣2{3<+/,h×⍵}⌺3 3⊢⍵
+        }
+
+        ∇r←thinning img;shft;up;down;left;right
+         ;uplft;uprht;dnlft;dnrht;b1;b2;b3;b4
+         ;c1;s1;s2;c2;c3;pass
+         shft←↓↑⍨⍴⍤⊢×∘×⊣+¯1<×⍤⊣
+        loop1:
+         r←img
+         pass←0
+        loop2:
+         up←¯1 0 shft img
+         down←1 0 shft img
+         left←0 ¯1 shft img
+         right←0 1 shft img
+         uplft←¯1 ¯1 shft img
+         uprht←¯1 1 shft img
+         dnlft←1 ¯1 shft img
+         dnrht←1 1 shft img
+         b1←right∧uprht∨up
+         b2←up∧uplft∨left
+         b3←left∧dnlft∨down
+         b4←down∧dnrht∨right
+         c1←b1+b2+b3+b4
+         s1←(right∨uprht)+(up∨uplft)+(left∨dnlft)+(down∨dnrht)
+         s2←(up∨uprht)+(left∨uplft)+(down∨dnlft)+(right∨dnrht)
+         c2←s1⌊s2
+         →pass/p2
+         c3←(uprht∨up∨~dnrht)∧right
+         img←img×~c3∧(c2≥2)∧(c2≤3)∧(c1=1)
+         pass←1
+         →loop2
+        p2:
+         c3←(dnlft∨down∨~uplft)∧left
+         img←img×~c3∧(c2≥2)∧(c2≤3)∧(c1=1)
+         →(r≡img)/0
+         →loop1
+        ∇
+     :EndNamespace
 
 :EndNamespace

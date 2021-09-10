@@ -14,8 +14,8 @@
          ⍝ use interger approximation
          s←⍴g←s⌿(s←0≠+/g)/g←⌊0.5+(⊢××/∘⍴)gauss r
          cluster←⊢×(-,⍨r)↓(,⍨r)↓{+/,g×⍵}⌺s∘(r⊖⍪⍨)∘(r⌽,⍨)
-         void←cluster~ ⋄ imax←,⍳(⌈/⌈/)
-         loop:
+         void←cluster~ ⋄ imax←,⍳⌈/∘,
+        loop:
          l←imax cluster bp
          (l⌷,bp)←0
          v←imax void bp
@@ -70,8 +70,8 @@
             m←(⍴⍵)⍴1
             box←{⍵÷⍥({+/,⍵}⌺(⍺ ⍺))m}
             bforg←{
-                wl←(⊢-(~2∘|))⌊0.5*⍨1+⍺÷⍨i←12×⍵*2
-                m←(⌊0.5+⊢)(¯4×1+wl)÷⍨i-+/(wl*2 1 0)×1 4 3×⍺
+                wl←(⊢-0=2|⊢)⌊0.5*⍨1+⍺÷⍨i←12×⍵*2
+                m←⌊0.5+(¯4×1+wl)÷⍨i-+/(wl*2 1 0)×1 4 3×⍺
                 wl+2×m≤⍳⍺
             }
             ⌊⊃box/(l bforg rad),⊂⍵
