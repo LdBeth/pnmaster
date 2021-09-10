@@ -113,10 +113,10 @@
          uprht←¯1 1 shft img
          dnlft←1 ¯1 shft img
          dnrht←1 1 shft img
-         b1←right∧uprht∨up
-         b2←up∧uplft∨left
-         b3←left∧dnlft∨down
-         b4←down∧dnrht∨right
+         b1←(~right)∧uprht∨up
+         b2←(~up)∧uplft∨left
+         b3←(~left)∧dnlft∨down
+         b4←(~down)∧dnrht∨right
          c1←b1+b2+b3+b4
          s1←(right∨uprht)+(up∨uplft)+(left∨dnlft)+(down∨dnrht)
          s2←(up∨uprht)+(left∨uplft)+(down∨dnlft)+(right∨dnrht)
