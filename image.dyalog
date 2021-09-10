@@ -16,21 +16,21 @@
          s←⍴g←s⌿(s←0≠+/g)/g←⌊0.5+(⊢××/∘⍴)gauss r
          cluster←⊢×(-,⍨r)↓(,⍨r)↓{+/,g×⍵}⌺s∘(r⊖⍪⍨)∘(r⌽,⍨)
          void←cluster∘~
-         imax←{(⍴⍵)⊤(,⍵=(⌈/⌈/⍵))⍳1}
+         imax←,⍳(⌈/⌈/)
          bp←?m⍴2
         loop:
          l←imax cluster bp
-         (l⌷bp)←0
+         (l⌷,bp)←0
          v←imax void bp
-         (v⌷bp)←1
-         →(l≢v)/loop
+         (v⌷,bp)←1
+         →(l≠v)/loop
          pt←bp
          da←m⍴0
          rank←¯1++/,bp
          :While rank≥0
              loc←imax cluster pt
-             (loc⌷pt)←0
-             (loc⌷da)←rank
+             (loc⌷,pt)←0
+             (loc⌷,da)←rank
              rank-←1
          :EndWhile
          pt←bp
@@ -38,8 +38,8 @@
          all←×/m
          :While rank<all
              loc←imax void pt
-             (loc⌷pt)←1
-             (loc⌷da)←rank
+             (loc⌷,pt)←1
+             (loc⌷,da)←rank
              rank+←1
          :EndWhile
         ∇
