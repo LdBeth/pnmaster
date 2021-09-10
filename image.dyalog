@@ -13,7 +13,7 @@
          m←,⍨2×r
          gauss←{*-4.5÷⍨∘.+⍨2*⍨(⌽,1∘↓)⍳1+⍵}
          ⍝ use interger approximation
-         s←⍴g←(-s)↓(s←,⍨(⊥⍨0=⌽)+/g)↓g←(⌊0.5∘+)(⊢××/∘⍴)gauss r
+         s←⍴g←s⌿(s←0≠+/g)/g←⌊0.5+(⊢××/∘⍴)gauss r
          cluster←⊢×(-,⍨r)↓(,⍨r)↓{+/,g×⍵}⌺s∘(r⊖⍪⍨)∘(r⌽,⍨)
          void←cluster∘~
          imax←{(⍴⍵)⊤(,⍵=(⌈/⌈/⍵))⍳1}
@@ -62,7 +62,6 @@
             ⊃aux/(⌽⍳≢,⍺),0
         }
         dither←{
-            ⍝ assume ⍵ has range 0~255
             (1-⍵÷255)≥(⍴⍵)##.tiling(0.5∘+÷≢∘,)⍺
         }
         colordither←{
