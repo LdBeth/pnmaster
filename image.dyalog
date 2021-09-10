@@ -44,12 +44,13 @@
          :EndWhile
         ∇
     :EndNamespace
+
     :Namespace Dither
         diffuse←{
             ⎕DIV←1
             in←(1-⍵÷255)
             g←3 3⍴1 2 1 2 3 2 1 2 1
-            m←⍺ tiling⍨⍴⍵
+            m←⍺ ##.tiling⍨⍴⍵
             aux←{
                 k←m=⍺
                 b←0.5≤a←in×k
@@ -62,11 +63,11 @@
         }
         dither←{
             ⍝ assume ⍵ has range 0~255
-            (1-⍵÷255)≥(⍴⍵)tiling(0.5∘+÷≢∘,)⍺
+            (1-⍵÷255)≥(⍴⍵)##.tiling(0.5∘+÷≢∘,)⍺
         }
         colordither←{
             q←{⌊r×⌊(r←255÷⍺-1)÷⍨⍵}
-            s←⍵+(255÷(0.5+≢,⍺)×⍺⍺-1)×⍤0 2⊢(⍴⍵)tiling ⍺
+            s←⍵+(255÷(0.5+≢,⍺)×⍺⍺-1)×⍤0 2⊢(⍴⍵)##.tiling ⍺
             255⌊⍺⍺(q⍤0 2)s
         }
     :EndNamespace
@@ -84,6 +85,15 @@
                 wl+2×m≤⍳⍺
             }
             ⌊⊃box/(l bforg rad),⊂⍵
+        }
+    :EndNamespace
+
+    :Namespace Interpol
+        nearest←{
+            img←⍺
+            x y←⍵
+            a b←(⍴img)(##.quant⍥##.linear)¨⍵
+            img[a;b]
         }
     :EndNamespace
 :EndNamespace
