@@ -1,0 +1,16 @@
+ 
+Special Code: Stencil ⌺
+ 
+  {⊢⍵}      {,⍵}      {⊂⍵}
+
+  {+/,⍵}
+  {∧/,⍵}    {∨/,⍵}    {=/,⍵}    {≠/,⍵}
+        
+  {  +/,A×⍵}    {  +/⍪A×⍤2⊢⍵}
+  {C<+/,A×⍵}    {C<+/⍪A×⍤2⊢⍵}
+C:   a single number or a variable whose value is a single number  A:   a variable whose value is a rank-2 or -3 array   The comparison can be < ≤ ≥ > = ≠   odd window size; movement 1; matrix argument
+   b←1=?100 160⍴2
+
+   cmpx '{ +/,⍵}⌺3 5 ⊢b' '{⊢+/,⍵}⌺3 5 ⊢b'
+  { +/,⍵}⌺3 5 ⊢b → 3.13E¯5 |       0%
+  {⊢+/,⍵}⌺3 5 ⊢b → 4.29E¯2 | +137150% ⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕
