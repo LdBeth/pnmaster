@@ -97,38 +97,28 @@
             ({0<+/,h×⍵}⌺3 3)⍣2{4=+/,h×⍵}⌺3 3⊢⍵
         }
 
-        ∇r←thinning img;shft;up;down;left;right
-         ;uplft;uprht;dnlft;dnrht;b1;b2;b3;b4
-         ;c1;s1;s2;c2;c3;pass
+        ∇r←thinning img;shft;cp1;cp2;cp3;ms;bs
+         ;c1;c2;c3;pass;⎕io
+         ⎕io←1
          shft←↓↑⍨⍴⍤⊢××⍤⊣+0=⊣
+         cp1←{(~ms[1⌷⍵;;])∧ms[2⌷⍵;;]∨ms[3⌷⍵;;]}
+         cp2←{⊃+⌿∨/4 2⍴⊂⍤2⊢ms[⍵;;]}
+         cp3←{(ms[1⌷⍵;;]∨ms[2⌷⍵;;]∨~ms[3⌷⍵;;])∧ms[4⌷⍵;;]}
+         ⍝ up down left right uplft uprht dnlft dnrht
+         ⍝ 1   2    3    4     5     6     7     8
         loop1:
          r←img
          pass←0
         loop2:
-         up←¯1 0 shft img
-         down←1 0 shft img
-         left←0 ¯1 shft img
-         right←0 1 shft img
-         uplft←¯1 ¯1 shft img
-         uprht←¯1 1 shft img
-         dnlft←1 ¯1 shft img
-         dnrht←1 1 shft img
-         b1←(~right)∧uprht∨up
-         b2←(~up)∧uplft∨left
-         b3←(~left)∧dnlft∨down
-         b4←(~down)∧dnrht∨right
-         c1←b1+b2+b3+b4
-         s1←(right∨uprht)+(up∨uplft)+(left∨dnlft)+(down∨dnrht)
-         s2←(up∨uprht)+(left∨uplft)+(down∨dnlft)+(right∨dnrht)
-         c2←s1⌊s2
-         →pass/p2
-         c3←(uprht∨up∨~dnrht)∧right
+         ms←↑(¯1 0)(1 0)(0 ¯1)(0 1)(¯1 ¯1)(¯1 1)(1 ¯1)(1 1) shft¨ ⊂img
+         c1←⊃+/cp1¨(4 6 1)(1 5 3)(3 7 2)(2 8 4)
+         c2←⊃⌊/cp2¨(4 6 1 5 3 7 2 8)(1 6 3 5 2 7 4 8)
+         c3←cp3 ⊃(0 1=pass)/(6 1 8 4)(7 2 5 3)
          img←img×~c3∧(c2≥2)∧(c2≤3)∧(c1=1)
+         →pass/endtest
          pass←1
          →loop2
-        p2:
-         c3←(dnlft∨down∨~uplft)∧left
-         img←img×~c3∧(c2≥2)∧(c2≤3)∧(c1=1)
+        endtest:
          →(r≡img)/0
          →loop1
         ∇
