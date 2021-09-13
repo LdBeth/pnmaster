@@ -1,1 +1,1 @@
-quant←{(⊢⍳⌊/)⍤1⊢|⍵∘.-⍺}
+quant←{(⊢⍳⌊/)⍤1⊢|⍵∘.-⍺} ⍝ get index of nearst elements to ⍵ in ⍺
