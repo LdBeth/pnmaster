@@ -1,0 +1,14 @@
+ diffuse←{
+     ⎕DIV←⎕IO←1
+     in←1-⍵÷255
+     g←1+∘.+⍨0 1 0
+     m←⍺ ##.tiling⍨⍴⍵
+     cvol←{+/,g×⍵}⌺3 3
+     aux←{
+         b←0.5≤a←in×m=⍺
+         err←a-b
+         c←err÷cvol m>⍺
+         in+←cvol c
+         b∨⍵}
+     ⊃aux/(⌽⍳≢,⍺),0
+ }

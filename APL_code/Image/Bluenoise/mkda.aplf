@@ -1,0 +1,32 @@
+ da←mkda r
+ ;m;g;s;gauss;cluster;void;imax
+ ;l;v;bp;pt;rank;loc;all;⎕IO
+ ⎕IO←0
+ m←,⍨2×r ⋄ bp←?m⍴2
+ gauss←{*-4.5÷⍨∘.+⍨2*⍨(⌽,1∘↓)⍳1+⍵}
+ ⍝ use interger approximation
+ g←⌊0.5+(⊢××/∘⍴)gauss r
+ g/⍨←s ⋄ g⌿⍨←s
+ s←⍴g
+ cluster←⊢×(-,⍨r)↓(,⍨r)↓{+/,g×⍵}⌺s∘(r⊖⍪⍨)∘(r⌽,⍨)
+ void←cluster~ ⋄ imax←,⍳⌈/∘,
+ :Repeat
+     l←imax cluster bp
+     (l⌷,bp)←0
+     v←imax void bp
+     (v⌷,bp)←1
+ :Until l=v
+ pt←bp ⋄ da←m⍴0 ⋄ rank←¯1++/,bp
+ :While rank≥0
+     loc←imax cluster pt
+     (loc⌷,pt)←0
+     (loc⌷,da)←rank
+     rank-←1
+ :EndWhile
+ pt←bp ⋄ rank←+/,bp ⋄ all←×/m
+ :While rank<all
+     loc←imax void pt
+     (loc⌷,pt)←1
+     (loc⌷,da)←rank
+     rank+←1
+ :EndWhile

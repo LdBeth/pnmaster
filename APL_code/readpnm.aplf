@@ -1,0 +1,29 @@
+ img←readpnm file;data;size;x;y;type;⎕IO
+ ⍝ read a PNM file, the file type is detected.
+ ⍝ only raster PNM in the style produced by NetPBM
+ ⍝ programs can be properly handled, and MaxVal is
+ ⍝ assumed to be 255.
+ ⎕IO←1
+ :If 1≥|≡file
+ :AndIf 0 2∊⍨10|⎕DR file
+ :AndIf ⎕NEXISTS file
+     data←83 ¯1 ⎕MAP file
+     type←(3 2⍴'P4P5P6')∧.=⎕UCS 2↑data
+     :If ~∨/type
+         ⎕SIGNAL⊂('EN' 11)('Message' 'Unknown file magic')
+     :EndIf
+     data←3↓data
+     (y x)←⊃⌽⎕VFI ⎕UCS ¯1↓(⍳∘10↑⊢)data
+     :Select type⍳1
+     :Case 1 ⍝ pbm
+         data←11⎕DR⊃0 83⎕DR(⍳∘10↓⊢)data
+         data⍴⍨←x,8×⌈8÷⍨y
+         img←y(↑⍤1)data
+     :Case 2 ⍝ pgm
+         img←x y⍴256|(⍳∘10↓⊢)⍣2⊢data
+     :Case 3 ⍝ ppm
+         img←(1⌽⍳3)⍉x y 3⍴256|(⍳∘10↓⊢)⍣2⊢data
+     :EndSelect
+ :Else
+     ⎕SIGNAL⊂('EN' 11)('Message' 'Invalid file name')
+ :EndIf

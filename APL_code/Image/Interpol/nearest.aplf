@@ -1,0 +1,4 @@
+ nearest←{
+     ⍝ img←⍺ ⋄ x y←⍵
+     ⍺⌷⍨(⍴⍺)##.(quant⍥linear¨)⍵
+ }

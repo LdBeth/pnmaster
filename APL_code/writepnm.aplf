@@ -1,0 +1,27 @@
+ {r}←img writepnm(spec file);type;hdr;dta;x;y;tie
+ ⍝ spec is one of 'P4' 'P5' 'P6', each stands
+ ⍝ for PBM, PGM, PPM.
+ type←(3 2⍴'P4P5P6')∧.=spec
+ :If ~∨/type
+     ⎕SIGNAL⊂('EN' 11)('Message' 'Unknown file kind')
+ :EndIf
+ :Select type⍳1
+ :Case 1 ⍝ pbm
+     hdr←10,⍨⎕UCS ⍕x y←⌽⍴img
+     dta←,(8×⌈8÷⍨x)↑⍤1⊢img
+     dta←2⊥⍉dta⍴⍨(8÷⍨≢dta),8
+ :Case 2 ⍝ pgm
+     hdr←10 50 53 53 10,⍨⎕UCS ⍕⌽⍴img
+     dta←,img
+ :Case 3 ⍝ ppm
+     hdr←10 50 53 53 10,⍨⎕UCS ⍕⌽1↓⍴img
+     dta←,(¯1⌽⍳3)⍉img
+ :EndSelect
+ tie←file ⎕NCREATE 0
+ :Trap 0
+     r←(spec,⎕UCS 10,hdr,dta)⎕NAPPEND tie 80
+ :Else
+     ⎕NUNTIE tie
+     ⎕SIGNAL⊂('EN' 11)('Message' 'Error occured when write file')
+ :EndTrap
+ ⎕NUNTIE tie
