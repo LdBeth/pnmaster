@@ -1,1 +1,2 @@
+⍝ Gamma adjustment, ⍺ is (0, 1].
  gamma←{⌊0.5+255×⍺*⍨⍵÷255}

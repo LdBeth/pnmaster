@@ -1,1 +1,2 @@
+⍝ Make grayscale base on luminance.
  luminace←{⌊0.3086 0.6094 0.082+.×⍵}

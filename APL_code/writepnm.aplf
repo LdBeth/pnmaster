@@ -1,4 +1,5 @@
  {r}←img writepnm(spec file);type;hdr;dta;x;y;tie
+ ⍝ write img to file.
  ⍝ spec is one of 'P4' 'P5' 'P6', each stands
  ⍝ for PBM, PGM, PPM.
  type←(3 2⍴'P4P5P6')∧.=spec
