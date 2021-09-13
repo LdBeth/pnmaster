@@ -1,4 +1,4 @@
- img←readpnm file;data;size;x;y;type;⎕IO
+ img←readpnm file;data;x;y;type;⎕IO
  ⍝ read a PNM file, the file type is detected.
  ⍝ only raster PNM in the style produced by NetPBM
  ⍝ programs can be properly handled, and MaxVal is
@@ -13,7 +13,11 @@
          ⎕SIGNAL⊂('EN' 11)('Message' 'Unknown file magic')
      :EndIf
      data←3↓data
-     (y x)←⊃⌽⎕VFI ⎕UCS ¯1↓(⍳∘10↑⊢)data
+     (x y)←⎕VFI ⎕UCS ¯1↓(⍳∘10↑⊢)data
+     :If x≢1 1
+         ⎕SIGNAL⊂('EN' 11)('Message' 'Invalid image size')
+     :EndIf
+     (y x)←y
      :Select type⍳1
      :Case 1 ⍝ pbm
          data←11⎕DR⊃0 83⎕DR(⍳∘10↓⊢)data

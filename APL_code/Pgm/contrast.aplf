@@ -1,4 +1,5 @@
  contrast←{
+     ⍝ enhence constrast
      L M←⍺
      255⌊(255×⍵>M)⌈(⍵≥L)×1+⌊(⍵-L)×253÷M-L
  }
