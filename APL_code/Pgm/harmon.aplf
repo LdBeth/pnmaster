@@ -1,0 +1,6 @@
+ harmon←{
+     ⍝ mosaic like effect
+     ⍝ tilesize←⍺
+     ⎕io←0
+     ⍵⌷⍨(⍺×∘⌊⍺÷⍨⍳)¨⍴⍵
+ }
