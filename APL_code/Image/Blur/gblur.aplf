@@ -4,10 +4,11 @@
      level radius←⍺
      m←1⍨¨⍵
      box←{⍵÷⍥({+/,⍵}⌺⍺ ⍺)m}
-     levelseries←{
+     ⍝ compute the radius series of length level
+     radseries←{
          wl←(⊢-∘~2∘|)⌊0.5*⍨1+⍺÷⍨i←12×⍵*2
          n←⌊0.5+(i-+/(wl*2 1 0)×1 4 3×⍺)÷¯4×1+wl
          wl+2×n≤⍳⍺
      }
-     ⌊⊃box/(level levelseries radius),⊂⍵
+     ⌊⊃box/(level radseries radius),⊂⍵
  }

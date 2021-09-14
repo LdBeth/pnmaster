@@ -36,3 +36,22 @@ Example:
     color writepnm 'P6' 'output.ppm' ⍝ PPM file.
 ```
 
+## Workspace organization
+
+```
+Netpbm
+ |
+ +-Ppm ⍝ Functions categoriezed by input type.
+ +-Pgm
+ +-Pbm
+ |
+ +-Image ⍝ Util functions.
+    | ⍝ Functions categoriezed by effects.
+    |
+    +-Bluenoise ⍝ For dithering.
+    +-Dither
+    |
+    +-Blur
+    |
+    +-Recons ⍝ Reconstruction of images.
+```
