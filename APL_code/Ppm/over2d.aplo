@@ -1,0 +1,1 @@
+ over2d←{(3⍴255)⊤⍺⍺ 255⊥⍵} ⍝ Treat the image data as 2D
