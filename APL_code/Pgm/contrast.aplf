@@ -1,5 +1,5 @@
  contrast←{
-     ⍝ enhence constrast
+     ⍝ enhance contrast using bounds L and M
      L M←⍺
      255⌊(255×⍵>M)⌈(⍵≥L)×1+⌊(⍵-L)×253÷M-L
  }
