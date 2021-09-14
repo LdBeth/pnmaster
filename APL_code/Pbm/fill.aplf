@@ -1,4 +1,5 @@
  fill←{
+     ⍝ Fill small blacks
      h←(3⍴2)⊤7 5 7
      (⊢∨{8=+/,h×⍵}⌺3 3)⍵
  }

@@ -1,0 +1,4 @@
+thickening←{
+    2=⎕NC'⍺': ~ ⍺ thinning~⍵
+    ~thinning~⍵
+}

@@ -1,4 +1,5 @@
  nearest←{
+     ⍝ nearest neighbor interpolation
      ⍝ img←⍺ ⋄ x y←⍵
      ⍺⌷⍨(⍴⍺)##.(quant⍥linear¨)⍵
  }

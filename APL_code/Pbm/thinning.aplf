@@ -1,4 +1,4 @@
- r←thinning img;cp1;cp2;cp3;ms;ds
+ r←{times} thinning img;test;cp1;cp2;cp3;ms;ds
  ;c1;c2;c3;pass;⎕IO
  ⎕IO←1
  cp1←{(~ms[1⌷⍵;;])∧ms[2⌷⍵;;]∨ms[3⌷⍵;;]}
@@ -7,6 +7,10 @@
  ⍝ up down left right uplft uprht dnlft dnrht
  ⍝ 1   2    3    4     5     6     7     8
  ds←(¯1 0)(1 0)(0 ¯1)(0 1)(¯1 ¯1)(¯1 1)(1 ¯1)(1 1)
+ →conv⍴⍨2≠⎕NC'times' ⍝ If go for convergence
+ test←endtest
+ →endtest
+conv:test←eqtest
 loop1:
  r←img
  pass←0
@@ -16,9 +20,11 @@ loop2:
  c2←⊃⌊/cp2¨(4 6 1 5 3 7 2 8)(1 6 3 5 2 7 4 8)
  c3←cp3⊃(0 1=pass)/(6 1 8 4)(7 2 5 3)
  img×←~c3∧(c2≥2)∧(c2≤3)∧(c1=1)
- →pass/endtest
+ →pass/test
  pass←1
  →loop2
-endtest:
- →(r≡img)/0
+eqtest:→(r≡img)/0
+ →loop1
+endtest:→(times≤0)/0
+ times-←1
  →loop1
