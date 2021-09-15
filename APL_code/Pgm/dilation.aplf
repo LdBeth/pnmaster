@@ -1,1 +1,1 @@
- dilation←{⌈/{,⍵}⌺3 3⊢⍵}
+ dilation←{⌈/{,⍵}⌺(1+2×⍺ ⍺)⊢⍵} ⍝ ⍺ is the radius

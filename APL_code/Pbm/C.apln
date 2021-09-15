@@ -1,0 +1,6 @@
+:Namespace C
+    ⍝ Example masks.
+    H←(3⍴2)⊤0 3 5
+    H_ms←⌽⊖H_h←2=∘.∧⍨2 1 0
+    H_mo←∘.∨⍨0 1 0
+:EndNamespace

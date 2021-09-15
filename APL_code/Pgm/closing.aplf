@@ -1,2 +1,3 @@
- closing←closing
- closing←erosion dilation
+ closing←{
+     ⍺ erosion ⍺ dilation ⍵
+ }

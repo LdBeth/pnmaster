@@ -1,4 +1,2 @@
- mofilter←{
-     h←∘.∨⍨0 1 0
-     ({0<+/,h×⍵}⌺3 3)⍣2{4=+/,h×⍵}⌺3 3⊢⍵
- }
+ mofilter←mofilter
+ mofilter←C.H_mo∘closing C.H_mo∘opening

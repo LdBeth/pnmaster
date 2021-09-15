@@ -1,4 +1,4 @@
  opening←{
-     h2←⌽⊖h1←(3⍴2)⊤5 6 0
-     {0<+/,h2×⍵}⌺3 3⊢{4=+/,h1×⍵}⌺3 3⊢⍵
+     ⍝ remove small regions of 1s.
+     ⍺ dilation ⍺ erosion ⍵
  }
