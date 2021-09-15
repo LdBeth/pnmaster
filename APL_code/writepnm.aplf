@@ -4,7 +4,7 @@
  ⍝ for PBM, PGM, PPM.
  type←(3 2⍴'P4P5P6')∧.=spec
  :If ~∨/type
-     ⎕SIGNAL⊂('EN' 11)('Message' 'Unknown file kind')
+     ⎕SIGNAL⊂('EN' 6)('Message' 'Unknown file kind')
  :EndIf
  :Select type⍳1
  :Case 1 ⍝ pbm
