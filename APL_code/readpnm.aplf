@@ -8,8 +8,8 @@
  :AndIf 0 2∊⍨10|⎕DR file
  :AndIf ⎕NEXISTS file
      data←83 ¯1 ⎕MAP file
-     type←(3 2⍴'P4P5P6')∧.=⎕UCS 2↑data
-     :If ~∨/type
+     type←('P',¨'456')⍳⊂⎕UCS 2↑data
+     :If type>3
          ⎕SIGNAL⊂('EN' 11)('Message' 'Unknown file magic')
      :EndIf
      data←3↓data
@@ -18,9 +18,9 @@
          ⎕SIGNAL⊂('EN' 11)('Message' 'Invalid image size')
      :EndIf
      (y x)←y
-     :Select type⍳1
+     :Select type
      :Case 1 ⍝ pbm
-         data←11⎕DR⊃0 83⎕DR(⍳∘10↓⊢)data
+         data←11 ⎕DR⊃0 83 ⎕DR(⍳∘10↓⊢)data
          data⍴⍨←x,8×⌈8÷⍨y
          img←y(↑⍤1)data
      :Case 2 ⍝ pgm
