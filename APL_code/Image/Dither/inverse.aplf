@@ -1,0 +1,5 @@
+ inverse←{
+     ⍝ create a grayscale from halftoned image
+     conv←{+/,⍵}⌺(1+2×⍺ ⍺)
+     ⌊255×(~÷⍥conv 1⍨¨)⍵
+ }
