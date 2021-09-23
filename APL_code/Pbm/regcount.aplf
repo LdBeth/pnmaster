@@ -1,0 +1,13 @@
+ n←regcount img;shft;a;b;c;d;iso
+ ⍝ count regions in img
+ shft←##.Image.shift
+ a←⊢∧1∘shft
+ b←⊢∧1 ¯1∘shft
+ c←0 ¯1∘shft∧1∘shft
+ d←⊢∧0 ¯1∘shft
+ n←0
+ iso←+/∘,⊢∧1={+/,⍵}⌺3 3
+ :Repeat
+     n+←iso img
+     img←(a∨b∨c∨d)img
+ :Until 0=+/,img
