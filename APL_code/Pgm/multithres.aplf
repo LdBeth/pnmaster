@@ -1,0 +1,6 @@
+ multithres←{
+     ⍝ multiple thresholding
+     (p i)←⍺ ⍝ (≢p)=1+≢i
+     idx←i[⍋i]
+     p[idx ##.Image.thres ⍵]
+ }
