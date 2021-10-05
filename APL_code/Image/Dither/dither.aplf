@@ -1,1 +1,1 @@
- dither←{(⍵×⌈/,⍺)<255×⍺ ##.tiling⍨⍴⍵} ⍝ notice there would be white dots
+ dither←{(⍵×⌈/,⍺)<254×⍺ ##.tiling⍨⍴⍵}
