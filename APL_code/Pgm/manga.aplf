@@ -1,0 +1,4 @@
+ manga←{
+     ⍝ Manga effect
+     (⍺∘##.Image.Dither.dither∨15∘>)⍵
+ }

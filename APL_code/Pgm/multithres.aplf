@@ -1,6 +1,6 @@
  multithres←{
      ⍝ multiple thresholding
-     (p i)←⍺ ⍝ (≢p)=1+≢i
-     idx←i[⍋i]
-     p[idx ##.Image.thres ⍵]
+     ivl←¯1↓¨(⌈2,⍨2÷⍨1+≢),⌿⍤⍴⊢,⊢/ ⍝ intervals
+     (p i)←ivl ⍺[⍋⍺] ⍝ (≢p)=1+≢i
+     p[i ##.Image.thres ⍵]
  }
