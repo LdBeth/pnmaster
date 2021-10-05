@@ -1,4 +1,3 @@
- manga←{
-     ⍝ Manga effect
-     (⍺∘##.Image.Dither.dither∨15∘>)⍵
- }
+ manga←manga
+ ⍝ Dyadic. Manga effect
+ manga←##.Image.Dither.dither∨15>⊢
