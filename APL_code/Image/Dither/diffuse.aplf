@@ -1,5 +1,5 @@
  diffuse←{
-     ⎕DIV←⎕IO←1
+     ⎕DIV←1⊣⎕IO←0
      in←1-⍵÷255
      g←1+∘.+⍨0 1 0
      m←⍺ ##.tiling⍨⍴⍵
