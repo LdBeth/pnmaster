@@ -1,2 +1,2 @@
  dither←dither
- dither←⊢<≢∘,⍤⊣÷⍨255×0.5+(⍴⊢)##.tiling⊣
+ dither←⊢<(1+⌈/∘,⍤⊣)÷⍨255×0.5+(⍴⊢)##.tiling⊣
