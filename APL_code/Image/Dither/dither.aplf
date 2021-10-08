@@ -1,2 +1,3 @@
  dither←dither
+ ⍝ ⍺←dither array ⋄ ⍵←input image
  dither←⊢<(1+⌈/∘,⍤⊣)÷⍨255×0.5+(⍴⊢)##.tiling⊣

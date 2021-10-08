@@ -1,6 +1,8 @@
  da←mkda r
  ;m;g;s;gauss;cluster;void;imax
  ;l;v;bp;pt;rank;loc;all;⎕IO
+ ⍝ void-and-cluster method for dither array
+ ⍝ r is the radius of output
  ⎕IO←0
  m←,⍨2×r ⋄ bp←?m⍴2
  gauss←{*-4.5÷⍨∘.+⍨2*⍨(⌽,1∘↓)⍳1+⍵}
