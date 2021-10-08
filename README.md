@@ -4,6 +4,11 @@
 
 BSD 2-Clause “Simplified” License
 
+## Workspace Size
+
+The default `MAXWS` is too small for process any larger images, it is
+recommended to set it to above `640M`.
+
 ## Netpbm
 
 Beware that this library can only read and write raster PNM files
