@@ -1,5 +1,5 @@
- r←n optimal img;bmp;bin;rgb
- ;i;b;euclid;most
+ r←optimal img;bmp;bin;rgb
+ ;c;b;euclid;most
  ;m;⎕IO
  ⍝ compute optimal palette
  ⍝ it is recomended using
@@ -11,13 +11,12 @@
  ⍝ 16*3 binning map
  bmp←16⊥⌊img÷16
  rgb←,256⊥img
- ⍝ vote
- i←0
- :Repeat
+vote:
  ⍝ count bins
-     b←(,bmp)most euclid rgb
-     r,←rgb[⊃⍒,(⊢×{+/,⍵}⌺21 21)bmp=b]
-     i+←1
- :Until i=n
- ⍝ fin
+ b←(,bmp)most euclid rgb
+ c←rgb[⊃⍒,(⊢×{+/,⍵}⌺21 21)bmp=b]
+ →(c∊r)/fin
+ r,←c
+ →vote
+fin:
  r←(3 1,≢r)⍴(3⍴256)⊤r
