@@ -6,14 +6,14 @@
  ⍝ a shrinked image
  ⎕IO←0
  r←⍬
- euclid←{∧/12996≤+⌿×⍨r(-⍤1 0⍤¯1)⍥((3⍴256)∘⊤)⍵}
+ euclid←{∧/12996≤+⌿×⍨img(-⍤0 1⍤¯1)⍵}
  most←(((⊢⍳⌈/)⊢/)⌷⊣/){⍺(+/⍵)}⌸
  ⍝ 16*3 binning map
  bmp←16⊥⌊img÷16
  rgb←,256⊥img
 vote:
  ⍝ count bins
- b←(,bmp)most euclid rgb
+ b←bmp most⍥,euclid(3⍴256)⊤r
  c←rgb[⊃⍒,(⊢×{+/,⍵}⌺21 21)bmp=b]
  →(c∊r)/fin
  r,←c
