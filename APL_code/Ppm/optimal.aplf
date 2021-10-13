@@ -1,10 +1,8 @@
  r←optimal img;bmp;bin;rgb
  ;c;b;euclid;most
- ;m;⎕IO
  ⍝ compute optimal palette
  ⍝ it is recomended using
  ⍝ a shrinked image
- ⎕IO←0
  r←⍬
  euclid←{∧/12996≤+⌿×⍨img(-⍤0 1⍤¯1)⍵}
  most←((⊃∘⍒⊢/)⌷⊣/){⍺(+/⍵)}⌸
