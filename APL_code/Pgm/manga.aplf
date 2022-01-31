@@ -1,3 +1,5 @@
- manga←manga
- ⍝ Dyadic. Manga effect
- manga←##.Image.Dither.dither∨15>⊢
+ manga←{
+     ⍝ Dyadic. Manga effect
+     ⍺←15
+     (##.Image.(Bluenoise.MASK32∘Dither.dither)∨⍺∘>)⍵
+ }
