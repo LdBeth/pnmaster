@@ -1,6 +1,5 @@
  smooth←{
      ⍝ smooth by blur then re-threshold
-     gauss←{*-4.5÷⍨∘.+⍨2*⍨(⌽,1∘↓)⍳1+⍵}
-     m←⌊2÷⍨⌈/,g←⌊0.5+(⊢××/∘⍴)gauss ⍺
+     m←⌊2÷⍨⌈/,g←##.Image.gauss ⍺
      {m<+/,g×⍵}⌺(⍴g)⊢⍵
  }

@@ -5,10 +5,8 @@
  ⍝ r is the radius of output
  ⎕IO←0
  m←,⍨2×r ⋄ bp←?m⍴2
- gauss←{*-4.5÷⍨∘.+⍨2*⍨(⌽,1∘↓)⍳1+⍵}
  ⍝ use interger approximation
- g←⌊0.5+(⊢××/∘⍴)gauss r
- g/⍨←s ⋄ g⌿⍨←s
+ g←##.gauss r
  s←⍴g
  cluster←⊢×(-,⍨r)↓(,⍨r)↓{+/,g×⍵}⌺s∘(r⊖⍪⍨)∘(r⌽,⍨)
  void←cluster~ ⋄ imax←,⍳⌈/∘,

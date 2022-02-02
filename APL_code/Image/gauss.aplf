@@ -1,0 +1,8 @@
+ gauss←{
+     ⎕IO←0
+     ⍝ gaussian with integer approximation
+     g←⌊0.5+(⊢××/∘⍴)*-4.5÷⍨∘.+⍨2*⍨(⌽,1∘↓)⍳1+⍵
+     ⍝ trim zeros
+     g/⍨←s←0≠+/g ⋄ g⌿⍨←s
+     g
+ }
