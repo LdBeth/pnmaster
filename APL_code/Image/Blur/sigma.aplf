@@ -1,0 +1,5 @@
+ sigma←{
+     ⍝ Sigma filter
+     ⍝ (rad thres)←⍺ ⋄ ⍵ ← grayscale
+     ⌊w(×÷⍥(+/)⊢)(⊢/⍺)≥|⍵(-⍤0 1)w←{,⍵}⌺(1+2×2⍴⊣/⍺)⊢⍵
+ }
