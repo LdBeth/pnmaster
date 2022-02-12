@@ -1,4 +1,1 @@
- equalize←{
-     ⎕IO←0
-     (⌊255×+\(histogram÷≢∘,)⍵)[⍵]
- }
+ equalize←{(⌊255×+\(histogram÷≢∘,)⍵)[⍵+⎕IO]}
