@@ -1,0 +1,7 @@
+ res←m affine img;x;y;g;m;idx;⎕IO
+ ⍝ affine transformation
+ ⎕IO←0
+ (x y)←⍴img
+g←¯1↓⍉⌊m+.×⍤99 1⊢⍉(⍉y x 1⍴⍳x)⍪(1 x y⍴⍳y)⍪1
+ m←,∧⌿(x y>⍤0 2⊢g)∧0<g
+ res←x y⍴(0,,img)[m×1+,+⌿y 1×⍤0 2⊢g]
