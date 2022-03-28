@@ -1,0 +1,10 @@
+ lsb←{
+     ⍝ Least Significant Bit Steganography
+     ⍝ with Midpoint Circle Approach
+     ⎕IO←0
+     (msg r)←⍺
+     img←256⊥⍵
+     c←+/(1,⍨⊃⌽⍴img)×⍤1⊢(⌊2÷⍨⍴img)+⍤1⊢##.Image.midcic r
+     rls←{256⊥⍉(⊢+((⍺⍴⍨⍴)∧~)+(¯1×(~⍺⍴⍨⍴)∧⊢))2|⍉(3⍴256)⊤⍵}
+     (3⍴256)⊤(⍴img)⍴msg∘rls@c⊢,img
+ }
