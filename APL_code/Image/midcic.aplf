@@ -3,7 +3,7 @@
  res←1 2⍴xy←rad 0
  re←|(rad*2)-⍨(+/*∘2)
  :Repeat
-     :If (re xy+¯1 1)<re xy+0 1
+     :If ¯1 1<⍥(re xy+⊢)0 1
          xy+←¯1 1
      :Else
          xy+←0 1
