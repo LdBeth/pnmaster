@@ -1,14 +1,9 @@
  res←midcic rad;re;xy
 ⍝ mid-point circle
  res←1 2⍴xy←rad 0
- re←|(rad*2)-⍨(+/*∘2)
+ re←|(rad*2)-⍨+/⍤×⍨
  :Repeat
-     :If ¯1 1<⍥(re xy+⊢)0 1
-         xy+←¯1 1
-     :Else
-         xy+←0 1
-     :EndIf
-     res⍪←xy
+     res⍪←xy←¯1 1(⊃>⍥re⌽,⍥⊂)⍥(xy∘+)0 1
  :Until ≤/xy
  res⍪←⊖⌽(¯1+-⌿xy)↓res
  res⍪←¯1 1×⍤1⊢1↓⊖res
