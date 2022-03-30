@@ -1,7 +1,7 @@
  getlsb←{
      ⍝ decode lsb encoded message
      ⎕IO←0
-     img←256⊥⍵
-     c←+/(1,⍨⊃⌽⍴img)×⍤1⊢(⌊2÷⍨⍴img)+⍤1⊢##.Image.midcic ⍺
-     1=2|,⍉(3⍴256)⊤(⊂c)⌷,img
+     s←1↓⍴⍵
+     c←+/(1,⍨⊃⌽s)×⍤1⊢(⌊2÷⍨s)+⍤1⊢##.Image.midcic ⍺
+     1=2|,(⊂c)⌷⍉,⍤2⊢⍵
  }
