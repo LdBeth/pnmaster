@@ -3,6 +3,6 @@
  ⎕IO←1
  s←⌊2÷⍨¯1↑⍴lab
  c←(2⌷lab)+0J1×3⌷lab
- c[;2×⍳s]+←bin×(c[;¯1+2×⍳s]-c[;2×⍳s]) solve t 3
- (,(⊂2 3)⌷lab)←,9 11○⍤0 2⊢c
+ c[;2×⍳s]+←bin×(c[;¯1+2×⍳s]-c[;2×⍳s])solve t 3
+ ((⊂2 3)⌷lab)←9 11○⍤0 2⊢c
  out←lab

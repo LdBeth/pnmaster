@@ -12,4 +12,4 @@
  d×←×t
  j←l-res+d
  k←l-res-d
- res+←m×d×¯1+2×j<⍥|k
+ res+←m×d×¯1+2×j>⍥|k
