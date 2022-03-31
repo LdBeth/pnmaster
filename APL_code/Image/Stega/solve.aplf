@@ -1,0 +1,15 @@
+ res←l solve(t r);ab;c;d;m;j;k
+ ⍝ let l be a point on the line
+ ⍝ t be the direction of the line
+ ⍝ r be the radius from 0,0
+ ⍝ solve the intersection
+ ⍝ normalize t so 0=|t
+ ab←9 11○¯11○×t
+ c←+/(ab×9 11∘○)⍤0⊢l
+ m←r>|c
+ res←c×¯11○×t
+ d←(r-⍥(×⍨)c)*÷2
+ d×←×t
+ j←l-res+d
+ k←l-res-d
+ res+←m×d×¯1+2×j<⍥|k
