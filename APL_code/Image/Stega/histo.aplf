@@ -1,4 +1,5 @@
  histo←{
+     ⍝ Histogram of 0-179 degree
      ⎕IO←1 ⋄ ⎕DIV←1
      s←⌊2÷⍨¯1↑⍴⍵
      c←(2⌷⍵)+0J1×3⌷⍵
