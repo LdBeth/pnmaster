@@ -1,5 +1,5 @@
  manga←{
      ⍝ Dyadic. Manga effect
-     ⍺←15
-     (##.Image.(Bluenoise.MASK32∘Dither.dither)∨⍺∘>)⍵
+     ⍺←15 ⍝ Threshold
+    (⍺⍺∘##.Image.Dither.dither∨⍺∘>)⍵
  }
