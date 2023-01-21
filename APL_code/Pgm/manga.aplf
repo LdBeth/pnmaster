@@ -1,5 +1,6 @@
  manga←{
      ⍝ Dyadic. Manga effect
-     ⍺←15 ⍝ Threshold
-    (⍺⍺∘##.Image.Dither.dither∨⍺∘>)⍵
+     ⍺←10 ⍝ Threshold
+     s⌈←255×⍺>s←2 dilation ⍵
+    (⍺⍺ ##.Image.Dither.dither s)∨125>⍵+255-1 dilation s
  }
