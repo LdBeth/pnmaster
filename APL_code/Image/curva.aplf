@@ -1,6 +1,6 @@
  out←curva u;d;i;A;⎕IO
  ⎕IO←1
-    ⍝ Curvature based image processig
+ ⍝ Curvature based image processig
  d←0⍴⍨8,⍴u
  :For i :In ⍳8
      A←CKS[i;;]
