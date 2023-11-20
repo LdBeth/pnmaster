@@ -1,0 +1,8 @@
+ out←lab(t gdb r)bin;c;s;⎕IO
+ ⍝ Gradient Domain Binary Image Hiding
+ ⎕IO←1
+ s←⌊2÷⍨⊢/⍴lab
+ c←(2⌷lab)+¯11○3⌷lab
+ c[;2×⍳s]+←bin×(c[;¯1+2×⍳s]-c[;2×⍳s])solve t r
+ ((⊂2 3)⌷lab)←9 11○⍤0 2⊢c
+ out←lab
