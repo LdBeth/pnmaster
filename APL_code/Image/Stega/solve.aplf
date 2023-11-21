@@ -4,12 +4,13 @@
  ⍝ r be the radius from 0,0
  ⍝ solve the intersection
  ⍝ normalize t so 0=|t
- ab←9 11○¯11○×t
+ t←×t
+ ab←9 11○¯11○t
  c←+/(ab×9 11∘○)⍤0⊢l
  m←r>|c
- res←c×¯11○×t
+ res←c×¯11○t
  d←(r-⍥(×⍨)c)*÷2
- d×←×t
+ d×←t
  j←l-res+d
  k←l-res-d
  res+←m×d×¯1+2×j>⍥|k
