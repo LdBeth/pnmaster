@@ -3,7 +3,7 @@
  ⍝ t be the direction of the line
  ⍝ r be the radius from 0,0
  ⍝ solve the intersection
- ⍝ normalize t so 0=|t
+ ⍝ normalize t so 1=|t
  t←×t
  ab←9 11○¯11○t
  c←+/(ab×9 11∘○)⍤0⊢l
