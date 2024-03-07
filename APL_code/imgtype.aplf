@@ -1,7 +1,7 @@
  imagetype←{
      (11=⎕DR ⍵)∧2=⍴⍴⍵:'P4'
-     maxval←((∧/255∘≥∧⍥,0∘≤)∧⌊≡⊢)⍵
-     maxval∧2=⍴⍴⍵:'P5'
-     maxval∧(3=⊃∧3=⍴)⍴⍵:'P6'
-     ⎕SIGNAL⊂('EN' 6)('Message' 'Unknown image type')
+     isb←((∧/255∘≥∧⍥,0∘≤)∧⌊≡⊢)⍵
+     isb∧2=⍴⍴⍵:'P5'
+     isb∧(3=⊃∧3=⍴)⍴⍵:'P6'
+     ⎕SIGNAL⊂('EN' 6)('Message' 'Invalid image data')
  }
