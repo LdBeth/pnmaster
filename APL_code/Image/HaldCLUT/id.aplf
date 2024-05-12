@@ -1,0 +1,9 @@
+ id←{
+     ⍝ ⍵←grid
+    ⎕io←0
+    s←⍵×lvl←⍵×⍵
+    d←1 s s⍴⍳lvl ⍝ Red
+    d⍪←(lvl|s⍴⍵×⍳lvl)∘.+lvl/⍳⍵
+    d⍪⍉s s⍴⍵/⍳lvl ⍝ Blue
+    d
+ }
