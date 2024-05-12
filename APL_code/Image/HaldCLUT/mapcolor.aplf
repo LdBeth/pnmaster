@@ -1,0 +1,15 @@
+ mapcolor←{
+     ⍝ x y←mapcolor r g b
+     ⍝ Assume 3×1728×1728 CLUT
+     ⎕IO←0
+     ⍝ color level
+     lvl←144 ⍝ or 256, which assumes 3×4096×4096
+     ⍺←⍬
+     m←⌊lvl÷⍨size←⌊(3÷2)*⍨lvl
+     r←0⌷⍵ ⋄ g←1⌷⍵ ⋄ b←2⌷⍵
+     y←r+lvl×m|g
+     x←(⌊g÷m)+b×m
+     (3,size,size)≢⍴⍺:x y ⍝ if no map
+     A←⍺
+     1 2 0⍉x{A[;⍺;⍵]}⍤0⊢y
+ }

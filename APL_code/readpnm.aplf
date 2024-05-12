@@ -24,9 +24,9 @@
          data⍴⍨←x,8×⌈8÷⍨y
          img←y(↑⍤1)data
      :Case 2 ⍝ pgm
-         img←x y⍴256|(⍳∘10↓⊢)⍣2⊢data
+         img←x y⍴163⎕DR 256|(⍳∘10↓⊢)⍣2⊢data
      :Case 3 ⍝ ppm
-         img←(1⌽⍳3)⍉x y 3⍴256|(⍳∘10↓⊢)⍣2⊢data
+         img←(1⌽⍳3)⍉x y 3⍴163⎕DR 256|(⍳∘10↓⊢)⍣2⊢data
      :EndSelect
  :Else
      ⎕SIGNAL⊂('EN' 11)('Message' 'Invalid file name')
