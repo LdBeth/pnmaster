@@ -7,39 +7,19 @@ BSD 2-Clause “Simplified” License
 ## Workspace Size
 
 The default `MAXWS` is too small for process any larger images, it is
-recommended to set it to above `640M`.
+recommended to set it to above `640M` and `2G` is the size suitable
+for typical online avaliable digital images. Please consult the
+Installation and Configuration Guide to the platform of your Dyalog
+APL for how to set this parameter.
 
-## Netpbm
+## [NetPBM](https://netpbm.sourceforge.net)
 
-Beware that this library can only read and write raster PNM files
-produced by Netpbm command line programs. Other PNM files might fail.
+Beware that this library can only read and write files in raster PNM
+format produced by Netpbm command line programs. PNM files produced by
+other programs, for example, Preview.app on OS X, although complaints
+to PNM file specification, might failed to be read by this library. It
+that case `pnmtopnm` can be used to normalized the image format.
 
-### `readpnm`
-
-Example:
-
-```
-    input←readpnm 'input.pgm'
-```
-
-
-### `writepnm`
-
-Example:
-
-```
-    ⌈/,bit
-1
-    bit writepnm 'P4' 'output.pbm' ⍝ PBM file.
-    ⌈/,grey
-255
-    grey writepnm 'P5' 'output.pgm' ⍝ PGM file.
-    ≢color
-3
-    ⌈/,color
-255
-    color writepnm 'P6' 'output.ppm' ⍝ PPM file.
-```
 
 ## Workspace organization
 
