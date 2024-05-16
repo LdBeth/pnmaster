@@ -55,8 +55,10 @@ Netpbm
     |
     +-Bluenoise ⍝ For dithering.
     +-Dither
+    +-Noise ⍝ Add noise to images
     |
     +-Blur
+    +-HaldCLUT ⍝ Color Look Up Table
     |
     +-Recons ⍝ Reconstruction of images.
 ```
