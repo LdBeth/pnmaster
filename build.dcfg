@@ -1,0 +1,6 @@
+{
+  Settings: {
+      MAXWS: "100M",
+      LX: "⎕OFF⊣⎕SAVE'pnm'⊣⎕SE.Link.Import'pnm' 'APL_code'"
+  }
+}

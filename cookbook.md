@@ -26,7 +26,6 @@ Use `pgmtoppm` to promote an PGM image to PPM, or in the APL,
 (⊢⍴⍨3,⍴)image
 ```
 
-
 ### `readpnm`
 
 ```apl

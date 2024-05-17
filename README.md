@@ -1,8 +1,10 @@
 # PNMaster
 
+An APL image processing library complements NetPBM.
+
 ## LICENSE
 
-BSD 2-Clause “Simplified” License
+[BSD 2-Clause “Simplified” License](LICENSE)
 
 ## Workspace Size
 
@@ -20,6 +22,8 @@ other programs, for example, Preview.app on OS X, although complaints
 to PNM file specification, might failed to be read by this library. It
 that case `pnmtopnm` can be used to normalized the image format.
 
+This libarary also makes the assumption that grayscale/colored images
+uses 8-bit color.
 
 ## Workspace organization
 
