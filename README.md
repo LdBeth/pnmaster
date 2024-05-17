@@ -42,3 +42,7 @@ Netpbm
     |
     +-Recons ⍝ Reconstruction of images.
 ```
+
+## Documentation
+
+See [cookbook](cookbook.md).
