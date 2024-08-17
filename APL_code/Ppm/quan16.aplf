@@ -1,0 +1,5 @@
+ quant16←{
+    ⍝ Quantize color to 4096
+     A←⌊255×(⎕IO-⍨⍳16)÷15
+     A[⍵⍸⍨A-17÷2]
+ }

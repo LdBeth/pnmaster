@@ -2,5 +2,5 @@
      ⍝ multiple thresholding
      ⍝ (≢p)=1+≢img
      i←⌈2÷⍨2+/p←⍺[⍋⍺]
-     p[i ##.Image.thres ⍵]
+     p[i⍸⍵]
  }
