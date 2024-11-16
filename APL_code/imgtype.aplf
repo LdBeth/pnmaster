@@ -1,6 +1,6 @@
  imagetype←{
      (11=⎕DR ⍵)∧2=⍴⍴⍵:'P4'
-     isb←((∧/255∘≥∧⍥,0∘≤)∧⌊≡⊢)⍵
+     isb←((∧/1=0 256⍸,)∧⌊≡⊢)⍵
      isb∧2=⍴⍴⍵:'P5'
      isb∧(3=⊃∧3=⍴)⍴⍵:'P6'
      ⎕SIGNAL⊂('EN' 6)('Message' 'Invalid image data')

@@ -1,4 +1,4 @@
-readpnm=:3 : 0
+parsepnm=: monad define
   type=. 0 1 { y
   if. (<type) e. 'P4';'P5';'P6' do.
     data=.3 }. y
@@ -18,11 +18,11 @@ readpnm=:3 : 0
   end.
 )
 
-writepnm=:4 : 0
+formatpnm=: dyad define
   spec=.y
   img=.x
   if. -. (<spec) e. 'P4';'P5';'P6' do.
-    smoutput 'Error. unknow file type'
+    smoutput 'Error: unknow file type'
     return.
   else.
     hdr=.spec,LF
@@ -37,5 +37,20 @@ writepnm=:4 : 0
       img=.,img
     end.
     hdr,LF,img { a.
+  end.
+)
+
+imagetype =: monad define
+  if. (1=3!:0 y)*.2=$$y do.
+    'P4' return.
+  end.
+  isb=.(*./1=_1 255 I.,y)*.y-:>.y
+  if. isb*.2=$$y do.
+    'P5' return.
+  elseif. isb*.(3={.$y)*.3=$$y do.
+    'P6' return.
+  else.
+    smoutput 'Error: invalid image data'
+    return.
   end.
 )
