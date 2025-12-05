@@ -1,4 +1,3 @@
- opening←{
-     ⍝ remove small regions of 1s.
-     ⍺ dilation ⍺ erosion ⍵
- }
+ opening←opening
+ ⍝ remove small regions of 1s.
+ opening←⊣dilation erosion

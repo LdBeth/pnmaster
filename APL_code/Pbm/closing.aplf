@@ -1,4 +1,3 @@
- closing←{
-     ⍝ remove small regions of 0s
-     ⍺ erosion ⍺ dilation ⍵
- }
+ closing←closing
+ ⍝ remove small regions of 0s
+ closing←⊣erosion dilation

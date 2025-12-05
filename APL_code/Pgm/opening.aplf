@@ -1,3 +1,2 @@
- opening←{
-     ⍺ dilation ⍺ erosion ⍵
- }
+ opening←opening
+ opening←⊣dilation erosion
